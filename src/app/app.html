@@ -1,0 +1,59 @@
+<h1 [style.color]="color">Hii Shubham Mishra</h1>
+
+<input name="color"  [(ngModel)]="color" type="text" placeholder="Enter Color Name ">
+
+
+<mat-slide-toggle>Toggle me!</mat-slide-toggle>
+
+<button mat-button>Click</button>
+
+
+<mat-checkbox>Check Me!</mat-checkbox>
+
+<mat-slider min="1" max="5" step="0.5">
+  <input matSliderThumb value="1.5">
+</mat-slider>
+
+<mat-expansion-panel hideToggle>
+  <mat-expansion-panel-header>
+    <mat-panel-title> This is the expansion title </mat-panel-title>
+    <mat-panel-description> This is a summary of the content </mat-panel-description>
+  </mat-expansion-panel-header>
+  <p>This is the primary content of the panel.</p>
+</mat-expansion-panel>
+
+
+<mat-card class="example-card" appearance="outlined">
+  <mat-card-header >
+    <img [src]="usrURL" style="width: 40px; border-radius: 50%;" alt="">
+
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Shubham Mishra</mat-card-title>
+    <mat-card-subtitle>Software Engineer</mat-card-subtitle>
+  </mat-card-header>
+  <img  src="assets/self.png" style="width: 15%; border-radius: 50%;"   alt="Photo of Shubham">
+  <mat-card-content>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora eligendi facere quas esse atque neque omnis corrupti fugiat. Distinctio, asperiores!</p>
+</mat-card-content>
+  <mat-card-actions>
+    <button matButton>LIKE</button>
+    <button matButton>SHARE</button>
+  </mat-card-actions>
+</mat-card>
+
+
+
+<!-- data binding -->
+<p>{{courseLessons| json}}</p>
+
+
+
+<div *ngFor="let lesson of courseLessons" (click)="selectLesson(lesson)" >
+  {{ lesson.title }}
+</div>
+
+
+
+<router-outlet></router-outlet>
+
+
