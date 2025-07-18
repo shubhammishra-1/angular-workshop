@@ -1,25 +1,31 @@
 import { Component, signal, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Courses } from './shared/courses';
+import { ProductList } from './product-list';
+
+import { ClientDetails } from './client-details/client-details';
 
 // importing Material Module
 
 import { MaterialModuleModule } from './material-module/material-module-module';
 
 
-
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,MaterialModuleModule],
+  imports: [RouterOutlet,MaterialModuleModule,ClientDetails],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 
 
 export class App implements OnInit {
+
   protected readonly title = signal('angular-workshop');
    
   color='red'
   usrURL="assets/user.png"
+  
+  currentLesson=null;
 
   courseLessons = [
   { title: 'Hello Angular' },
@@ -32,15 +38,22 @@ export class App implements OnInit {
   { title: 'Unit Testing Fundamentals' },
 ];
 
-  constructor(){}
+  constructor(private coursesService: Courses) {}
 
+
+  productList:ProductList[]=[];
 
   ngOnInit(): void {
+
+    this.productList = this.coursesService.details;
+    console.log(this.productList);
       
   }
   
 
-  selectLesson(lesson:{}){
+  selectLesson(lesson:any){
+
+    this.currentLesson=lesson;
 
     console.log(lesson);
 
